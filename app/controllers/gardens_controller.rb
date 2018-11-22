@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :edit, :update, :destroy]
+  before_action :set_garden, only: %i[show edit update destroy]
 
   # GET /gardens
   def index
@@ -17,8 +19,7 @@ class GardensController < ApplicationController
   end
 
   # GET /gardens/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /gardens
   def create
@@ -47,13 +48,14 @@ class GardensController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_garden
-      @garden = Garden.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def garden_params
-      params.require(:garden).permit(:name, :banner_url)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_garden
+    @garden = Garden.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def garden_params
+    params.require(:garden).permit(:name, :banner_url)
+  end
 end

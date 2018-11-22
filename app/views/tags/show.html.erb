@@ -1,0 +1,6 @@
+<h1><%= @tag.name %></h1>
+
+
+<% @tag.plants.each do |plant| %>
+  <%= render 'components/card', plant: plant %>
+<% end %>
